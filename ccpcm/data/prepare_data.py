@@ -106,8 +106,8 @@ for k, v in data_train.items():
 
 # Test will be applied on week 50th
 # Note: testset specifies discount on product 24 however, it has never been discounted before in the trainset
-prediction_example = pandas.read_csv(f"dataset/prediction_example.csv").sort_values(['i','j'])
-promotion_schedule = pandas.read_csv(f"dataset/promotion_schedule.csv").sort_values(['j'])
+prediction_example = pandas.read_csv("dataset/prediction_example.csv").sort_values(['i','j'])
+promotion_schedule = pandas.read_csv("dataset/promotion_schedule.csv").sort_values(['j'])
 
 test_Ditp1 = []
 test_Bit = []
@@ -115,13 +115,15 @@ test_Binf = []
 test_Bit_p1 = []
 test_metas_i = []
 
+cur_dipt1 = np.zeros(n_prod)
+for j in range(n_prod):
+    discount = promotion_schedule.query('j == %d' % j).discount.to_numpy()
+    if len(discount) > 0: cur_dipt1[j] = discount
+
 T_test = 49
 tIds = range(T_test-window_size, T_test)
 for i in list(set(prediction_example.i)):
-    cur_dipt1 = np.zeros(n_prod)
-    # for j in range(n_prod):
-    #     discount = promotion_schedule.query('j == %d'%j).discount.to_numpy()
-    #     if len(discount) > 0: cur_dipt1[j] = discount
+
     test_Ditp1.append(cur_dipt1)
     test_Bit.append(Bit[i, tIds].astype(np.int32))
     test_Binf.append(Binf[i])

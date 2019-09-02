@@ -56,7 +56,7 @@ def evaluate_error(dataset_dir, ccpcm_model, ccpcm_ps, splitname, batch_size=1):
 if __name__ == '__main__':
     from ccpcm.tools.model_loader import load_ccpcm
 
-    expr_code = '06'
+    expr_code = '10'
 
     expr_dir = os.path.join('../experiments/', expr_code)
 
