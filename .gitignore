@@ -112,3 +112,5 @@ ccpcm/data/dataset/test/
 ccpcm/data/dataset/train/
 
 ccpcm/data/dataset/vald/
+
+ccpcm/data/dataset/prediction_results\.csv
