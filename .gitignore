@@ -102,3 +102,13 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+ccpcm/experiments/
+
+\.idea/
+
+ccpcm/data/dataset/test/
+
+ccpcm/data/dataset/train/
+
+ccpcm/data/dataset/vald/
